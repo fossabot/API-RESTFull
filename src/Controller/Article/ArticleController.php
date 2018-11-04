@@ -13,7 +13,7 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
  *
  * @FOSRest\NamePrefix("api_")
  */
-class ArticleController  extends AbstractRestController
+class ArticleController extends AbstractRestController
 {
     /**
      * @ApiDoc()
