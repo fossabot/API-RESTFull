@@ -1,0 +1,5 @@
+controllers:
+    resource: App\Controller\Article\ArticleController
+    type: rest
+    prefix: /api
+

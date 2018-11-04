@@ -1,0 +1,16 @@
+App\Entity\Article:
+    exclusion_policy: ALL
+    access_order:     alphabetical
+    properties:
+        id:
+            expose: true
+            groups: [Default]
+        title:
+            expose: true
+            groups: [Default]
+
+    virtual_properties:
+        getCategoryLabel:
+            expose: true
+            serialized_name: categoryLabel
+            groups: [Default]
