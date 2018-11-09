@@ -13,7 +13,7 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7
+    - php: 7.1
     - php: 7.2
 
 before_install:
@@ -30,8 +30,6 @@ script:
   - ./vendor/bin/php-cs-fixer fix --diff --dry-run -v
   # this checks that the YAML config files contain no syntax errors
   - ./bin/console lint:yaml config
-  # this checks that the Twig template files contain no syntax errors
-  - ./bin/console lint:twig templates
   # this checks that the XLIFF translations contain no syntax errors
   - ./bin/console lint:xliff translations
   # this checks that the application doesn't use dependencies with known security vulnerabilities
