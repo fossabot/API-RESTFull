@@ -1,8 +1,5 @@
 SYMFONY  = bin/console
-COMPOSER = compose
-
-
-
+COMPOSER = composer
 
 ##
 ## Utils
@@ -47,6 +44,19 @@ vendor: composer.lock
 		echo cp .env.dist .env;\
 		cp .env.dist .env;\
 	fi
+#RSA keys generation
+rsa-keys: ## Generate RSA keys need for JWT encoding/decoding
+rsa-keys:
+	@if [ -f config/jwt/private.pem ]; \
+	then\
+		rm config/jwt/private.pem;\
+	fi
+	@if [ -f config/jwt/public.pem ]; \
+	then\
+		rm config/jwt/public.pem;\
+	fi
+	openssl genrsa -out config/jwt/private.pem -aes256 -passout pass:passphrase 4096
+	openssl rsa -pubout -in config/jwt/private.pem -out config/jwt/public.pem -passin pass:passphrase
 
 ##
 ## Quality assurance
@@ -94,4 +104,3 @@ validate-mapping:
 .DEFAULT_GOAL := help
 help:
 	@grep -E '(^[a-zA-Z_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
-.PHONY: help
