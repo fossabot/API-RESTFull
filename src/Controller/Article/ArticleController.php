@@ -10,8 +10,6 @@ use Nelmio\ApiDocBundle\Annotation\ApiDoc;
 
 /**
  * Class ArticleController.
- *
- * @FOSRest\NamePrefix("api_")
  */
 class ArticleController extends AbstractRestController
 {

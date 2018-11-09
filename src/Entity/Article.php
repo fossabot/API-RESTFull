@@ -33,7 +33,7 @@ class Article
 
     public function setTitle(string $title): self
     {
-        $this->title = $Title;
+        $this->title = $title;
 
         return $this;
     }
