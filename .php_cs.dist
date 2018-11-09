@@ -2,13 +2,17 @@
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
+    ->exclude('bin')
+    ->exclude('config')
+    ->exclude('docker')
+    ->exclude('fixtures')
+    ->exclude('templates')
+    ->exclude('translations')
     ->exclude('var')
-    ->exclude('web/bundles')
-    ->exclude('web/css')
-    ->exclude('web/fonts')
-    ->exclude('web/js')
-    ->notPath('web/config.php')
+    ->exclude('src/Migrations')
+    ->notPath('public/index.php')
 ;
+
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
