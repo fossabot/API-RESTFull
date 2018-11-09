@@ -1,10 +1,16 @@
 SYMFONY  = bin/console
 COMPOSER = compose
 
+
+
+
 ##
 ## Utils
 ## -----
 ##
+start: ## Start the application
+start:
+	$(SYMFONY) server:start
 
 db: ## Reset the database and load fixtures
 db: .env vendor
@@ -22,7 +28,7 @@ db-validate-schema: ## Validate the doctrine ORM mapping
 db-validate-schema: .env vendor
 	$(SYMFONY) doctrine:schema:validate
 
-.PHONY: db migration watch
+.PHONY: start db migration watch
 
 # rules based on files
 composer.lock: composer.json
