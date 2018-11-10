@@ -3,12 +3,16 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Timestampable\Traits\Timestampable;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
 class Article
 {
+    use Timestampable;
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -20,6 +24,11 @@ class Article
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
+     */
+    private $auther;
 
     public function getId(): ?int
     {
@@ -44,5 +53,17 @@ class Article
     public function getCategoryLabel()
     {
         return 'category_label';
+    }
+
+    public function getAuther(): ?User
+    {
+        return $this->auther;
+    }
+
+    public function setAuther(?User $auther): self
+    {
+        $this->auther = $auther;
+
+        return $this;
     }
 }

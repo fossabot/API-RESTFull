@@ -20,6 +20,18 @@ abstract class BaseFixture extends Fixture
 
     private $referencesIndex = [];
 
+    /**
+     * BaseFixture constructor.
+     *
+     * @param ObjectManager $manager
+     * @param Generator $faker
+     */
+    public function __construct(ObjectManager $manager, Generator $faker)
+    {
+        $this->manager = $manager;
+        $this->faker = $faker;
+    }
+
     abstract protected function loadData(ObjectManager $manager);
 
     public function load(ObjectManager $manager)
