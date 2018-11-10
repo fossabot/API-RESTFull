@@ -21,6 +21,7 @@ before_install:
 
 install:
   - composer install
+  - composer update --lock
   - echo "extension = apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - ./bin/phpunit install
 
