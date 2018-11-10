@@ -6,7 +6,6 @@ use App\Entity\Article;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-
 /**
  * Class AppFixtures.
  */
@@ -17,10 +16,10 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
         $this->createMany(
             10,
             'article',
-            function ($count) use ($manager) {
+            function ($count) {
                 return (new Article())
                     ->setTitle($this->faker->title)
-                    ->setAuther($this->getRandomReference('user'))
+                    ->setAuthor($this->getRandomReference('user'))
                     ;
             }
         );
@@ -30,8 +29,8 @@ class ArticleFixtures extends BaseFixture implements DependentFixtureInterface
 
     public function getDependencies()
     {
-        return array(
+        return [
             UserFixtures::class,
-        );
+        ];
     }
 }

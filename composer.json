@@ -1,4 +1,6 @@
 {
+    "name": "slashfan/symfony-realworld-example-app",
+    "description": "Example of a RESTFull API with Symfony",
     "type": "project",
     "license": "proprietary",
     "require": {

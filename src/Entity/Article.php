@@ -28,7 +28,7 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="articles")
      */
-    private $auther;
+    private $author;
 
     public function getId(): ?int
     {
@@ -55,14 +55,14 @@ class Article
         return 'category_label';
     }
 
-    public function getAuther(): ?User
+    public function getAuthor(): ?User
     {
-        return $this->auther;
+        return $this->author;
     }
 
-    public function setAuther(?User $auther): self
+    public function setAuthor(?User $author): self
     {
-        $this->auther = $auther;
+        $this->author = $author;
 
         return $this;
     }

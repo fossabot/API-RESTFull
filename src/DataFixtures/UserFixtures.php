@@ -17,7 +17,7 @@ class UserFixtures extends BaseFixture
         $this->createMany(
             3,
             'user',
-            function ($count) use ($manager) {
+            function ($count) {
                 return (new User())
                     ->setFirstName($this->faker->name)
                     ->setEmail($this->faker->email)
