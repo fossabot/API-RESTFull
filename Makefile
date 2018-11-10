@@ -69,17 +69,13 @@ lint:
 	$(SYMFONY) lint:yaml fixtures/
 	$(SYMFONY) lint:yaml translations/
 
-phpcs: ## Run phpcode_sniffer
-phpcs:
-	$(EXEC_PHP) vendor/bin/phpcs
-
 php-cs-fixer: ## Run php-cs-fixer
 php-cs-fixer:
 	$(EXEC_PHP) vendor/bin/php-cs-fixer fix --verbose
 
 phpstan: ## Run phpstan
 phpstan:
-	$(EXEC_PHP) vendor/bin/phpstan analyse
+	$(EXEC_PHP) vendor/bin/phpstan analyse --level 6 src tests
 
 security: ## Run security-checker
 security:
@@ -87,11 +83,7 @@ security:
 
 test: ## Run phpunit tests
 test:
-	$(EXEC_PHP) vendor/bin/phpunit
-
-test-coverage: ## Run phpunit tests with code coverage
-test-coverage:
-	$(EXEC_PHP) php -d zend_extension=xdebug.so vendor/bin/phpunit --coverage-html=var/coverage/
+	$(EXEC_PHP) bin/phpunit
 
 validate-composer: ## Validate composer.json and composer.lock
 validate-composer:

@@ -79,7 +79,7 @@ abstract class BaseFixture extends Fixture
             $this->referencesIndex[$groupName] = [];
 
             foreach ($this->referenceRepository->getReferences() as $key => $ref) {
-                if (strpos($key, $groupName.'_') === 0) {
+                if (mb_strpos($key, $groupName.'_') === 0) {
                     $this->referencesIndex[$groupName][] = $key;
                 }
             }
@@ -97,7 +97,7 @@ abstract class BaseFixture extends Fixture
     protected function getRandomReferences(string $className, int $count)
     {
         $references = [];
-        while (count($references) < $count) {
+        while (\count($references) < $count) {
             $references[] = $this->getRandomReference($className);
         }
 
