@@ -1,5 +1,5 @@
-app_article:
-    resource: 'App\Controller\Article\ArticleController'
-    type: rest
+app:
+    resource: ../../src/Controller
+    type: annotation
     prefix: /api
     name_prefix: api_

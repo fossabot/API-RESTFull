@@ -5,23 +5,24 @@ namespace App\Controller\Article;
 use App\Controller\AbstractRestController;
 use App\Entity\Article;
 use FOS\RestBundle\Controller\Annotations as FOSRest;
-use FOS\RestBundle\Request\ParamFetcherInterface;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * Class ArticleController.
+ * Class getArticlesController.
  */
-class ArticleController extends AbstractRestController
+class getArticlesController extends AbstractRestController
 {
     /**
      * @ApiDoc()
      *
-     * @param ParamFetcherInterface $paramFetcher
-     * @FOSRest\QueryParam(name="page", requirements="\d+", default="1")
+     * @FOSRest\View(statusCode=200)
      *
-     * @FOSRest\View()
+     * @Route(name="get_articles", path="/articles", methods={"GET"})
+     *
+     * @return Article[]|object[]
      */
-    public function getArticleListAction(ParamFetcherInterface $paramFetcher)
+    public function __invoke()
     {
         return $this->em->getRepository(Article::class)->findAll();
     }

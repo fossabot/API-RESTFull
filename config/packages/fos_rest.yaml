@@ -9,8 +9,8 @@ fos_rest:
         formats:
             json: true
             xml:  false
-    routing_loader:
-        default_format: json
+#    routing_loader:
+#        default_format: json
     serializer:
         serialize_null: true
     param_fetcher_listener: true
